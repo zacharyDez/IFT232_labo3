@@ -37,7 +37,7 @@ public class Customer {
 			double thisAmount = 0;
 
 			// add rental price to total amount
-			thisAmount += each.rentalGetPrice();
+			thisAmount += each.getRentalPrice();
 			frequentRenterPoints += each.getFrequentRenterPoints();
 
 			// show figures for this rental

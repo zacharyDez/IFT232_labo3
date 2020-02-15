@@ -39,7 +39,7 @@ public class Rental {
 		return date_;
 	}
 
-    int getFrequentRenterPoints() {
+    public int getFrequentRenterPoints() {
         // add frequent renter points
         int frequentRenterPoints=1;
         // add bonus for a new release rental
@@ -48,7 +48,7 @@ public class Rental {
         return frequentRenterPoints;
     }
 
-	double rentalGetPrice() {
+	public double getRentalPrice() {
 		double thisAmount = 0;
 
 		// determines amount for each line
@@ -69,5 +69,9 @@ public class Rental {
 		}
 
 		return thisAmount;
+	}
+
+	public void setDaysRented(int i) {
+		daysRented_ = i;
 	}
 }
