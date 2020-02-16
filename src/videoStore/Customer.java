@@ -12,7 +12,7 @@ import java.util.Vector;
 
 public class Customer {
     private String name;
-    private Vector<Rental> rentals;
+    protected Vector<Rental> rentals;
 
     public Customer(String name) {
         this.name = name;
@@ -50,41 +50,25 @@ public class Customer {
         return totalAmount;
     }
 
-	public int getFrequentRenterPoints() {
-		int frequentRenterPoints = 0;
+    public int getFrequentRenterPoints() {
+        int frequentRenterPoints = 0;
 
-		for (Rental each : rentals) {
-			// show figures for this rental
-			frequentRenterPoints += each.getFrequentRenterPoints();
-		}
+        for (Rental each : rentals) {
+            // show figures for this rental
+            frequentRenterPoints += each.getFrequentRenterPoints();
+        }
 
-		return frequentRenterPoints;
-	}
+        return frequentRenterPoints;
+    }
 
     public String englishStatement() {
-        double totalAmount = getTotalAmount();
-        int frequentRenterPoints = getFrequentRenterPoints();
-
-        String result = "Rental Record for " + getName() + "\n";
-        result += getRentalMessage();
-
-        // add footer lines
-        result += "Amount owed is " + totalAmount + "\n";
-        result += "You earned " + frequentRenterPoints + " frequent renter points\n";
-        return result;
+        EnglishStatement st = new EnglishStatement(this);
+        return st.print();
     }
 
     public String frenchStatement() {
-        double totalAmount = getTotalAmount();
-        int frequentRenterPoints = getFrequentRenterPoints();
-
-        String result = "Dossier du locataire: " + getName() + "\n";
-        result += getRentalMessage();
-
-        // add footer lines
-        result += "Le montant dû est: " + totalAmount + "\n";
-        result += "Vous avez mérité " + frequentRenterPoints + " points de locataire régulier.\n";
-        return result;
+        FrenchStatement st = new FrenchStatement(this);
+        return st.print();
     }
 
 }
