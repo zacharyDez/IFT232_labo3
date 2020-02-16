@@ -61,7 +61,7 @@ public class Customer {
 		return frequentRenterPoints;
 	}
 
-    public String statement() {
+    public String englishStatement() {
         double totalAmount = getTotalAmount();
         int frequentRenterPoints = getFrequentRenterPoints();
 
@@ -71,6 +71,19 @@ public class Customer {
         // add footer lines
         result += "Amount owed is " + totalAmount + "\n";
         result += "You earned " + frequentRenterPoints + " frequent renter points\n";
+        return result;
+    }
+
+    public String frenchStatement() {
+        double totalAmount = getTotalAmount();
+        int frequentRenterPoints = getFrequentRenterPoints();
+
+        String result = "Dossier du locataire: " + getName() + "\n";
+        result += getRentalMessage();
+
+        // add footer lines
+        result += "Le montant dû est: " + totalAmount + "\n";
+        result += "Vous avez mérité " + frequentRenterPoints + " points de locataire régulier.\n";
         return result;
     }
 

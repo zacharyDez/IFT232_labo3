@@ -23,7 +23,7 @@ public class StoreTest {
 		grandmaman.addRentals(new Rental(movies[3],7));
 		grandmaman.addRentals(new Rental(movies[4],1));
 		
-		System.out.println(grandmaman.statement());		
+		System.out.println(grandmaman.englishStatement());
 		
 		
 
