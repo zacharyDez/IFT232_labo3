@@ -11,43 +11,67 @@ import java.util.Vector;
  */
 
 public class Customer {
-	private String name;
-	private Vector<Rental> rentals;
+    private String name;
+    private Vector<Rental> rentals;
 
-	public Customer(String name) {
-		this.name = name;
-		rentals = new Vector<Rental>();
-	}
+    public Customer(String name) {
+        this.name = name;
+        rentals = new Vector<Rental>();
+    }
 
-	public void addRentals(Rental arg) {
-		rentals.addElement(arg);
-	}
+    public void addRentals(Rental arg) {
+        rentals.addElement(arg);
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String statement() {
-		double totalAmount = 0;
+    public String getRentalMessage() {
+        String result = "";
+
+        for (Rental each : rentals) {
+            // show figures for this rental
+            result += "\t" + each.getMovie().getTitle() + "\t" + each.getRentalPrice() + "\n";
+        }
+
+        return result;
+    }
+
+    public double getTotalAmount() {
+        double totalAmount = 0;
+
+        for (Rental each : rentals) {
+            double thisAmount = each.getRentalPrice();
+            // show figures for this rental
+            totalAmount += thisAmount;
+        }
+
+        return totalAmount;
+    }
+
+	public int getFrequentRenterPoints() {
 		int frequentRenterPoints = 0;
 
-		String result = "Rental Record for " + getName() + "\n";
-
 		for (Rental each : rentals) {
-			double thisAmount = 0;
-
-			// add rental price to total amount
-			thisAmount += each.getRentalPrice();
-			frequentRenterPoints += each.getFrequentRenterPoints();
-
 			// show figures for this rental
-			result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
-			totalAmount += thisAmount;
+			frequentRenterPoints += each.getFrequentRenterPoints();
 		}
-		// add footer lines
-		result += "Amount owed is " + totalAmount + "\n";
-		result += "You earned " + frequentRenterPoints + " frequent renter points\n";
-		return result;
+
+		return frequentRenterPoints;
 	}
+
+    public String statement() {
+        double totalAmount = getTotalAmount();
+        int frequentRenterPoints = getFrequentRenterPoints();
+
+        String result = "Rental Record for " + getName() + "\n";
+        result += getRentalMessage();
+
+        // add footer lines
+        result += "Amount owed is " + totalAmount + "\n";
+        result += "You earned " + frequentRenterPoints + " frequent renter points\n";
+        return result;
+    }
 
 }
