@@ -46,11 +46,11 @@ public class CustomerTest {
     @Test
     public void testGetRentalMessage() {
         String expected = "";
-        expected += "Caillou a le cancer\t3.0\n" +
+        expected += "\tCaillou a le cancer\t3.0\n" +
                 "\tFast and furious 38: Diesel Cars vs Google Cars\t3.0\n" +
                 "\t31 Jump Street: Ninja Academy\t6.0\n" +
                 "\tLes oiseaux se cachent pour mourir\t9.5\n" +
-                "\tLes gars chauds se cachent pour vomir\t2.0";
+                "\tLes gars chauds se cachent pour vomir\t2.0\n";
         assertEquals(grandmaman.getRentalMessage(), expected);
     }
 
@@ -58,11 +58,11 @@ public class CustomerTest {
     public void testEnglishWholeTextStatement() {
 
         String expected = "Rental Record for Grand-môman\n";
-        expected += "Caillou a le cancer\t3.0\n" +
+        expected += "\tCaillou a le cancer\t3.0\n" +
                 "\tFast and furious 38: Diesel Cars vs Google Cars\t3.0\n" +
                 "\t31 Jump Street: Ninja Academy\t6.0\n" +
                 "\tLes oiseaux se cachent pour mourir\t9.5\n" +
-                "\tLes gars chauds se cachent pour vomir\t2.0";
+                "\tLes gars chauds se cachent pour vomir\t2.0\n";
         expected += "Amount owed is 23.5\n";
         expected += "You earned 7 frequent renter points\n";
         assertEquals(grandmaman.englishStatement(), expected);
@@ -73,11 +73,11 @@ public class CustomerTest {
     public void testFrenchWholeTextStatement() {
 
         String expected = "Dossier du locataire: Grand-môman\n";
-        expected += "Caillou a le cancer\t3.0\n" +
+        expected += "\tCaillou a le cancer\t3.0\n" +
                 "\tFast and furious 38: Diesel Cars vs Google Cars\t3.0\n" +
                 "\t31 Jump Street: Ninja Academy\t6.0\n" +
                 "\tLes oiseaux se cachent pour mourir\t9.5\n" +
-                "\tLes gars chauds se cachent pour vomir\t2.0";
+                "\tLes gars chauds se cachent pour vomir\t2.0\n";
         expected += "Le montant dû est: 23.5\n";
         expected += "Vous avez mérité 7 points de locataire régulier.\n";
         assertEquals(grandmaman.frenchStatement(), expected);
